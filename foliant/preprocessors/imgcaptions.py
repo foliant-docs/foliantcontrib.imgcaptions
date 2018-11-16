@@ -74,7 +74,10 @@ class Preprocessor(BasePreprocessor):
                 with open(markdown_file_path, encoding='utf8') as markdown_file:
                     content = markdown_file.read()
 
-                with open(markdown_file_path, 'w', encoding='utf8') as markdown_file:
-                    markdown_file.write(self.process_captions(content))
+                processed_content = self.process_captions(content)
+
+                if processed_content:
+                    with open(markdown_file_path, 'w', encoding='utf8') as markdown_file:
+                        markdown_file.write(processed_content)
 
         self.logger.info('Preprocessor applied')
