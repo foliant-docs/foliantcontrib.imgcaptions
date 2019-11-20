@@ -34,7 +34,7 @@ The preprocessor supports the following options:
 :   Path to the CSS stylesheet file. This stylesheet should define rules for the `.image_caption` class. Default path is `imgcaptions.css`. If stylesheet file does not exist, default built-in stylesheet will be used.
 
 `template`
-:   Template string representing the tag of the caption to be placed under the image. Template must contain `{caption}` word, which will be replaced with the image caption. Default: `<p class="image_caption">{caption}</p>`
+:   Template string representing the HTML tag of the caption to be placed after the image. The template should contain the `{caption}` variable that will be replaced with the image caption. Default: `<p class="image_caption">{caption}</p>`.
 
 `targets`
 :   Allowed targets for the preprocessor. If not specified (by default), the preprocessor applies to all targets.
@@ -52,4 +52,4 @@ This Markdown source will be finally transformed into the HTML code:
 <p class="image_caption">My Picture</p>
 ```
 
-(Note that ImgCaptions preprocessor does not convert Markdown syntax into HTML; it only inserts HTML tags `<p class="image_caption">My Picture</p>` into Markdown code after the image definitions. Empty alternative text descriptions are ignored.)
+(Note that ImgCaptions preprocessor does not convert Markdown syntax into HTML; it only inserts HTML tags like `<p class="image_caption">My Picture</p>` into Markdown code after the image definitions. Empty alternative text descriptions are ignored.)

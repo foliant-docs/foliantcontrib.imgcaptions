@@ -1,7 +1,7 @@
 # 1.0.2
 
--   Fix: `stylesheet_path` only worked with !project_path modificator.
--   Add `template` param to customize the caption tag.
+-   Fix: `stylesheet_path` only worked with the `!project_path` modifier.
+-   Add the `template` parameter to customize the caption HTML tag.
 
 # 1.0.1
 
