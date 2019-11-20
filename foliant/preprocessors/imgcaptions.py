@@ -13,6 +13,7 @@ from foliant.preprocessors.base import BasePreprocessor
 class Preprocessor(BasePreprocessor):
     defaults = {
         'stylesheet_path': Path('imgcaptions.css'),
+        'template': '<p class="image_caption">{caption}</p>',
         'targets': [],
     }
 
@@ -23,7 +24,7 @@ class Preprocessor(BasePreprocessor):
 
         self.logger.debug(f'Preprocessor inited: {self.__dict__}')
 
-        self._stylesheet = self._get_stylesheet(self.options['stylesheet_path'])
+        self._stylesheet = self._get_stylesheet(Path(self.options['stylesheet_path']))
 
     def _get_stylesheet(self, stylesheet_file_path: Path) -> str:
         self.logger.debug(f'Stylesheet file path: {stylesheet_file_path}')
@@ -47,11 +48,11 @@ class Preprocessor(BasePreprocessor):
 
     def process_captions(self, content: str) -> str:
         _image_pattern = re.compile(r'\!\[(?P<caption>.+)\]\((?P<path>.+)\)')
-
+        caption_str = self.options['template'].format(caption='\g<caption>')
         content = re.sub(
             _image_pattern,
             "![\g<caption>](\g<path>)\n\n" +
-            "<p class=\"image_caption\">\g<caption></p>",
+            caption_str,
             content
         )
 

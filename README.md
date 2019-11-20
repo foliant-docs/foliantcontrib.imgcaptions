@@ -22,6 +22,7 @@ The preprocessor supports the following options:
 ```yaml
     - imgcaptions:
         stylesheet_path: !path imgcaptions.css
+        template: <p class="image_caption">{caption}</p>
         targets:
             - pre
             - mkdocs
@@ -31,6 +32,9 @@ The preprocessor supports the following options:
 
 `stylesheet_path`
 :   Path to the CSS stylesheet file. This stylesheet should define rules for the `.image_caption` class. Default path is `imgcaptions.css`. If stylesheet file does not exist, default built-in stylesheet will be used.
+
+`template`
+:   Template string representing the tag of the caption to be placed under the image. Template must contain `{caption}` word, which will be replaced with the image caption. Default: `<p class="image_caption">{caption}</p>`
 
 `targets`
 :   Allowed targets for the preprocessor. If not specified (by default), the preprocessor applies to all targets.
