@@ -1,3 +1,7 @@
+# 1.0.3
+
+-   Fix: `style` was inserted before front matter
+
 # 1.0.2
 
 -   Fix: `stylesheet_path` only worked with the `!project_path` modifier.
