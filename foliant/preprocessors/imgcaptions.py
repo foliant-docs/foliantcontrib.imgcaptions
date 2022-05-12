@@ -1,8 +1,7 @@
-'''
+"""
 Preprocessor for Foliant documentation authoring tool.
 Generates image captions using alternative texts for images.
-'''
-
+"""
 
 import re
 from pathlib import Path
@@ -47,16 +46,17 @@ class Preprocessor(BasePreprocessor):
 '''
 
     def process_captions(self, content: str) -> str:
-        _image_pattern = re.compile(r'\!\[(?P<caption>.+)\]\((?P<path>.+)\)')
-        caption_str = self.options['template'].format(caption='\g<caption>')
+        _image_pattern = re.compile(r'!\[(?P<caption>.+)]\((?P<path>.+)\)')
+        _front_matter_pattern = re.compile(r"(\A[\s]*---[\s\S]+?---|\A)")
+        caption_str = self.options['template'].format(caption=r'\g<caption>')
         content = re.sub(
             _image_pattern,
-            "![\g<caption>](\g<path>)\n\n" +
+            r"![\g<caption>](\g<path>)\n\n" +
             caption_str,
             content
         )
-
-        content = f'<style>\n{self._stylesheet}\n</style>\n\n{content}'
+        style_insert = f"\\g<1>\\n<style>\n{self._stylesheet}\n</style>\n\n"
+        content = re.sub(_front_matter_pattern, style_insert, content)
 
         self.logger.debug('Content modified')
 
