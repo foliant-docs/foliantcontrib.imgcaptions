@@ -1,3 +1,5 @@
+[![](https://img.shields.io/pypi/v/foliantcontrib.imgcaptions.svg)](https://pypi.org/project/foliantcontrib.imgcaptions/) [![](https://img.shields.io/github/v/tag/foliant-docs/foliantcontrib.imgcaptions.svg?label=GitHub)](https://github.com/foliant-docs/foliantcontrib.imgcaptions)
+
 # ImgCaptions
 
 ImgCaptions is a preprocessor that generates visible captions for the images from alternative text descriptions of the images. The preprocessor is useful in projects built with MkDocs or another backend that provides HTML output.
