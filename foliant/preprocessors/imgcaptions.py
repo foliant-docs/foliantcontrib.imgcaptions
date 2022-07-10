@@ -37,13 +37,12 @@ class Preprocessor(BasePreprocessor):
         else:
             self.logger.debug('Stylesheet file does not exist; using default stylesheet')
 
-            return '''
-.image_caption {
-    font-size: .8em;
-    font-style: italic;
-    text-align: right;
-    }
-'''
+            return ('\n'
+                    '.image_caption {\n'
+                    '    font-size: .8em;\n'
+                    '    font-style: italic;\n'
+                    '    text-align: right;\n'
+                    '    }\n')
 
     def process_captions(self, content: str) -> str:
         _image_pattern = re.compile(r'!\[(?P<caption>.+)]\((?P<path>.+)\)')
