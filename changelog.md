@@ -1,3 +1,7 @@
+# 1.0.4
+
+-   Fix: wrong captions were placed for figma-like images
+
 # 1.0.3
 
 -   Fix: `style` was inserted before front matter
