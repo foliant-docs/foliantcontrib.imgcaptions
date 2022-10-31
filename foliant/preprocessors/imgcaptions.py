@@ -46,8 +46,8 @@ class Preprocessor(BasePreprocessor):
 '''
 
     def process_captions(self, content: str) -> str:
-        _image_pattern = re.compile(r'!\[(?P<caption>.+)]\((?P<path>.+)\)')
-        _front_matter_pattern = re.compile(r"(\A[\s]*---[\s\S]+?---|\A)")
+        _image_pattern = re.compile(r'!\[(?P<caption>.+?)]\((?P<path>.+)\)')
+        _front_matter_pattern = re.compile(r"(\A\s*---[\s\S]+?---|\A)")
         caption_str = self.options['template'].format(caption=r'\g<caption>')
         content = re.sub(
             _image_pattern,
