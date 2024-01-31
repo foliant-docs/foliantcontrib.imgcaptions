@@ -51,7 +51,7 @@ class Preprocessor(BasePreprocessor):
         caption_str = self.options['template'].format(caption=r'\g<caption>')
         content = re.sub(
             _image_pattern,
-            r"![\g<caption>](\g<path>)\n\n" +
+            r"![\g<caption>](\g<path>)" +
             caption_str,
             content
         )
